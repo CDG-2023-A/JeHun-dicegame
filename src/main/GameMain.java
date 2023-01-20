@@ -21,17 +21,13 @@ public class GameMain {
         System.out.printf("플레이어2 이름 입력 : "); //플레이어2를 일반 Player.Player 로
         String name2 = Scanner.next();
 
-        FraudPlayer fraudPlayer = new FraudPlayer(name1, new FraudDice(), player1);
-        Player player = new Player(name2, new Dice());
-        Judge judge = new Judge();
+        Judge judge = new Judge(); //선수 등록을 하려면 일단 judge 객체 생성
+        Player player = new Player(name2, new Dice()); // player 객체 생성 후 FraudPlayer는 player의 상속된 관계이기 때문에 Player 아래에 객체 생성
+        FraudPlayer fraudPlayer = new FraudPlayer(name1, new FraudDice(), player);
 
         judge.register(fraudPlayer);
         judge.register(player);
         judge.start(round);
-
-        Recorder scoreRecord = new Recorder();
-
-        // 클래스가 나눠진 상태에서 fraudPlayer의 점수, Player의 점수를 나누는 방법 -> 상속을 이용
 
         Scanner.close();
     }
