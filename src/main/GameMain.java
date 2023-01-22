@@ -23,7 +23,7 @@ public class GameMain {
 
         Judge judge = new Judge(); //선수 등록을 하려면 일단 judge 객체 생성
         Player player = new Player(name2, new Dice()); // player 객체 생성 후 FraudPlayer는 player의 상속된 관계이기 때문에 Player 아래에 객체 생성
-        FraudPlayer fraudPlayer = new FraudPlayer(name1, new FraudDice(), player);
+        FraudPlayer fraudPlayer = new FraudPlayer(name1, new FraudDice());
 
         judge.register(fraudPlayer);
         judge.register(player);

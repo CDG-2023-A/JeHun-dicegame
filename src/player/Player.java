@@ -19,7 +19,6 @@ public class Player {
     public Dice getDice() {
         return this.dice;
     }
-
     public int getDicescore() {
         return this.dicescore;
     }
