@@ -12,17 +12,19 @@ public class FraudPlayer extends Player {
         this.fraudDice = fraudDice;
     }
 
-    public void cheat(Player player) {
-        if ( this.getDicescore() > this.player1.getDicescore()) { //플레이어2가 이기고 있으면
+    public int cheat(Player player) {
+        if ( this.getDiceScore() > this.player1.getDiceScore()) { //플레이어2가 이기고 있으면
             fraudDice.setMode(2); // strongmode
-            fraudDice.strongMode();
+            return fraudDice.strongMode();
         }
-        else if (this.player1.getDicescore() - this.getDicescore() >= 6) {// 6점차 이상으로 이기고 있으면
+        else if (this.player1.getDiceScore() - this.getDiceScore() >= 6) {// 6점차 이상으로 이기고 있으면
             fraudDice.setMode(1); // weakmode
-            fraudDice.weakMode();
+            return fraudDice.weakMode();
         }
-        else
+        else {
             fraudDice.setMode(0);
+            return getDice().roll();
+        }
     }
 
 

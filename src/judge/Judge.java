@@ -24,7 +24,7 @@ public class Judge {
 
             }
             else { // 일반 플레이어는 일반 주사위 굴리기
-                playerList.get(j).getDice().roll();
+                playerList.get(j).getDiceScore();
             }
         }
         for (int i = 0; i < round; i++) {
