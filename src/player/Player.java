@@ -36,7 +36,7 @@ public class Player {
             i++;
             return getResult();
         }
-        return getResult();
+        else return getResult();
     }
     public int normalAdd(int score) {
         if (j<5) {
@@ -45,7 +45,7 @@ public class Player {
             j++;
             return getResult();
         }
-        return getResult();
+        else return getResult();
     }
     public int versus() {
         return getResult();
