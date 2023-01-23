@@ -5,9 +5,12 @@ import dice.Dice;
 public class Player {
     private String name; //일반플레이어의 이름 (플레이어2의 이름)
     private Dice dice;
-    private int dicescore = 0; //일반플레이어의 주사위 수
-    private int tmp = getDice().roll(); //1~6까지 랜덤한 수를
-    //변수들을 private으로 캡슐화한 뒤, getter를 사용
+    private int diceScore = 0; //일반플레이어의 주사위 수
+    private int result = 0; //주사위 합산
+    private int [] fraudAddScore = new int [5];
+    private int [] normalAddScore = new int [5];
+    private int i = 0;
+    private int j = 0;
 
     public Player (String name, Dice dice) {
         this.name = name;
@@ -20,12 +23,31 @@ public class Player {
     public Dice getDice() {
         return this.dice;
     }
-
-    public int setDiceScore() { // DiceScore에 넣어주고
-        return this.dicescore = tmp;
+    public int getDiceScore() {
+        return this.diceScore = getDice().roll();
     }
-
-    public int getDiceScore() { // 그것을 리턴
-        return this.setDiceScore();
+    public int getResult() {
+        return this.result;
+    }
+    public int fraudAdd(int score) {
+        if (i<5) {
+            this.fraudAddScore[i] = score;
+            this.result += this.fraudAddScore[i];
+            i++;
+            return getResult();
+        }
+        return getResult();
+    }
+    public int normalAdd(int score) {
+        if (j<5) {
+            this.normalAddScore[j] = score;
+            this.result += this.normalAddScore[j];
+            j++;
+            return getResult();
+        }
+        return getResult();
+    }
+    public int versus() {
+        return getResult();
     }
 }

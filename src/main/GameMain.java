@@ -27,6 +27,7 @@ public class GameMain {
 
         judge.register(fraudPlayer);
         judge.register(player);
+        judge.register2(fraudPlayer);
         judge.start(round);
 
         Scanner.close();
