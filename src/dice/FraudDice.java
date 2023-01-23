@@ -19,12 +19,12 @@ public class FraudDice extends Dice{
     }
 
     public int weakMode() { // 메소드명은 카멜케이스
-        return randomNumber.nextInt(4) + 1;
+        return randomNumber.nextInt(4) + 1; //1,2,3,4
     }
     public int strongMode() { // 카멜케이스
-        return randomNumber.nextInt(4) + 3;
+        return randomNumber.nextInt(4) + 3; //3,4,5,6
     }
     public int normalMode() {
-        return randomNumber.nextInt(6) + 1;
+        return randomNumber.nextInt(6) + 1; //1,2,3,4,5,6
     }
 }
