@@ -14,24 +14,22 @@ import java.util.Scanner;
 public class GameMain {
     public static int round = 5;
     public static void main(String[] args) {
-        System.out.printf("플레이어1 이름 입력 : "); //플레이어1을 Player.FraudPlayer 로
+        System.out.print("플레이어1 이름 입력 : "); //플레이어1을 Player.FraudPlayer 로
         Scanner Scanner = new Scanner(System.in);
         String name1 = Scanner.next();
 
-        System.out.printf("플레이어2 이름 입력 : "); //플레이어2를 일반 Player.Player 로
+        System.out.print("플레이어2 이름 입력 : "); //플레이어2를 일반 Player.Player 로
         String name2 = Scanner.next();
 
-        FraudPlayer fraudPlayer = new FraudPlayer(name1, new FraudDice(), player1);
-        Player player = new Player(name2, new Dice());
-        Judge judge = new Judge();
+        Recorder recorder = new Recorder();
+        Judge judge = new Judge(recorder); //선수 등록을 하려면 일단 judge 객체 생성
+        Player player = new Player(name2, new Dice()); // player 객체 생성 후 FraudPlayer는 player의 상속된 관계이기 때문에 Player 아래에 객체 생성
+        FraudPlayer fraudPlayer = new FraudPlayer(name1, new FraudDice());
 
         judge.register(fraudPlayer);
         judge.register(player);
+        judge.register2(fraudPlayer);
         judge.start(round);
-
-        Recorder scoreRecord = new Recorder();
-
-        // 클래스가 나눠진 상태에서 fraudPlayer의 점수, Player의 점수를 나누는 방법 -> 상속을 이용
 
         Scanner.close();
     }
